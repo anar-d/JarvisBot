@@ -1,2 +1,1 @@
-token = "309505601:AAHv7OKe8AR8ZBzJjH3AycbWvLAogt6LD4g"
 API_key="bbdffdaf3c5c77897d386127486c03de"
