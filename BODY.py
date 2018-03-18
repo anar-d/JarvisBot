@@ -1,8 +1,8 @@
 import telebot
 from datetime import date, timedelta
+from random import choice
 from pyowm import OWM
 from os import listdir
-from random import choice
 
 token = "309505601:AAHv7OKe8AR8ZBzJjH3AycbWvLAogt6LD4g"
 API_key = "bbdffdaf3c5c77897d386127486c03de"
@@ -59,19 +59,13 @@ def handle_text(message):
         bot.send_audio(message.from_user.id, music)
         music.close()
     elif message.text == '/weather1':
-        for i in wtr[0]:
-            bot.send_message(message.from_user.id, i)
+        bot.send_message(message.from_user.id, '\n'.join(wtr[0]))
     elif message.text == '/weather2':
-        for i in wtr[0]:
-            bot.send_message(message.from_user.id, i)
-        for i in wtr[1]:
-            bot.send_message(message.from_user.id, i)
+        bot.send_message(message.from_user.id, '\n'.join(wtr[0]))
+        bot.send_message(message.from_user.id, '\n'.join(wtr[1]))
     elif message.text == '/weather3':
-        for i in wtr[0]:
-            bot.send_message(message.from_user.id, i)
-        for i in wtr[1]:
-            bot.send_message(message.from_user.id, i)
-        for i in wtr[2]:
-            bot.send_message(message.from_user.id, i)
+        bot.send_message(message.from_user.id, '\n'.join(wtr[0]))
+        bot.send_message(message.from_user.id, '\n'.join(wtr[1]))
+        bot.send_message(message.from_user.id, '\n'.join(wtr[2]))
 
 bot.polling(none_stop=True, interval=0)
