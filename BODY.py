@@ -1,14 +1,18 @@
-import os, random, telebot, datetime, pyowm
+import telebot
+from datetime import date, timedelta
+from pyowm import OWM
+from os import listdir
+from random import choice
 
 token = "309505601:AAHv7OKe8AR8ZBzJjH3AycbWvLAogt6LD4g"
-API_key="bbdffdaf3c5c77897d386127486c03de"
+API_key = "bbdffdaf3c5c77897d386127486c03de"
 
 def Weather():
-    tomorrow = str(datetime.date.today()+datetime.timedelta(days=1))
-    tomorrow_ = str(datetime.date.today()+datetime.timedelta(days=2))
-    tomorrow__ = str(datetime.date.today()+datetime.timedelta(days=3))
+    tomorrow = str(date.today()+timedelta(days=1))
+    tomorrow_ = str(date.today()+timedelta(days=2))
+    tomorrow__ = str(date.today()+timedelta(days=3))
 
-    owm = pyowm.OWM(API_key, language='ru')
+    owm = OWM(API_key, language='ru')
 
     fc = owm.three_hours_forecast('Moscow, RU')
     f = fc.get_forecast()
@@ -48,8 +52,8 @@ def handle_text(message):
     if message.text == '/music':
         bot.send_message(message.from_user.id, 'Подожди пару минут')
         directory = "Музыка для Джарвиса"
-        all_files_in_directory = os.listdir(directory)
-        random_file = random.choice(all_files_in_directory)
+        all_files_in_directory = listdir(directory)
+        random_file = choice(all_files_in_directory)
         music = open(directory + '/' + random_file, 'rb')
         bot.send_chat_action(message.from_user.id, 'upload_audio')
         bot.send_audio(message.from_user.id, music)
