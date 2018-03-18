@@ -4,9 +4,6 @@ from random import choice
 from pyowm import OWM
 from os import listdir
 
-token = "309505601:AAHv7OKe8AR8ZBzJjH3AycbWvLAogt6LD4g"
-API_key = "bbdffdaf3c5c77897d386127486c03de"
-
 def Weather():
     tomorrow = str(date.today()+timedelta(days=1))
     tomorrow_ = str(date.today()+timedelta(days=2))
